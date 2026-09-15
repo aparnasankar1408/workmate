@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WorkMate AI | Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-box">W</div>
+
+            <div class="logo-text">
+                <h2>Work<span>Mate</span></h2>
+                <small>AI Learning</small>
+            </div>
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="#" class="nav-item active">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="ai.html" class="nav-item">
+              <span>✦</span>
+               AI ASSISTANT
+            </a>
+
+            <a href="dna.html" class="nav-item">
+                <span class="nav-icon">◈</span>
+                Skill DNA
+            </a>
+
+            <a href="gap.html" class="nav-item">
+                <span class="nav-icon">⚡</span>
+                Skill Gaps
+            </a>
+
+
+            <p class="nav-title learning-title">LEARNING</p>
+
+            <a href="path.html" class="nav-item">
+                <span class="nav-icon">▣</span>
+                Learning Path
+            </a>
+
+            <a href="quiz.html" class="nav-item">
+                <span class="nav-icon">✓</span>
+                AI Quiz
+            </a>
+
+            <a href="progress.html" class="nav-item">
+                <span class="nav-icon">◔</span>
+                Progress
+            </a>
+
+
+            <p class="nav-title system-title">SYSTEM</p>
+
+            <a href="settings.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <div class="help-card">
+
+                <div class="help-icon">?</div>
+
+                <div>
+                    <strong>Need help?</strong>
+                    <p>Ask WorkMate AI</p>
+                </div>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="avatar">
+                    AS
+                </div>
+
+                <div class="profile-info">
+                    <strong>Aparna</strong>
+                    <span>IT Student</span>
+                </div>
+
+                <span class="more">•••</span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= TOP BAR ================= -->
+
+        <header class="topbar">
+
+            <div class="mobile-logo">
+                Work<span>Mate</span>
+            </div>
+
+
+            <div class="search-box">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    type="text"
+                    placeholder="Search learning, skills, resources..."
+                >
+
+                <span class="shortcut">⌘ K</span>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="top-avatar">
+                    AS
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="content">
+
+
+            <!-- ================= WELCOME ================= -->
+
+            <section class="welcome">
+
+                <div class="welcome-left">
+
+                    <p class="date">
+                        TUESDAY, SEPTEMBER 15
+                    </p>
+
+                    <h1>
+                        Good morning, Aparna <span>👋</span>
+                    </h1>
+
+                    <p class="welcome-description">
+                        Keep building your skills. You're making great progress.
+                    </p>
+
+                </div>
+
+
+                <button class="ask-button">
+
+                    <span>✦</span>
+
+                    Ask WorkMate AI
+
+                    <span>→</span>
+
+                </button>
+
+            </section>
+
+
+            <!-- ================= STATS ================= -->
+
+            <section class="stats">
+
+
+                <!-- LEARNING PROGRESS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-header">
+
+                        <span>Learning Progress</span>
+
+                        <div class="stat-icon orange">
+                            ↗
+                        </div>
+
+                    </div>
+
+                    <div class="stat-number">
+                        68%
+                    </div>
+
+                    <div class="small-progress">
+                        <div style="width:68%;"></div>
+                    </div>
+
+                    <p class="stat-footer">
+                        <strong>+8%</strong> from last week
+                    </p>
+
+                </div>
+
+
+                <!-- QUIZ -->
+
+                <div class="stat-card">
+
+                    <div class="stat-header">
+
+                        <span>Quiz Average</span>
+
+                        <div class="stat-icon purple">
+                            ✓
+                        </div>
+
+                    </div>
+
+                    <div class="stat-number">
+                        82%
+                    </div>
+
+                    <p class="normal-footer">
+                        <strong>Good</strong> performance
+                    </p>
+
+                </div>
+
+
+                <!-- SKILLS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-header">
+
+                        <span>Skills Identified</span>
+
+                        <div class="stat-icon blue">
+                            ◈
+                        </div>
+
+                    </div>
+
+                    <div class="stat-number">
+                        12
+                    </div>
+
+                    <p class="normal-footer">
+                        3 skills improving
+                    </p>
+
+                </div>
+
+
+                <!-- STREAK -->
+
+                <div class="stat-card">
+
+                    <div class="stat-header">
+
+                        <span>Learning Streak</span>
+
+                        <div class="stat-icon green">
+                            🔥
+                        </div>
+
+                    </div>
+
+                    <div class="stat-number">
+                        7 days
+                    </div>
+
+                    <p class="normal-footer">
+                        Keep it going!
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= DASHBOARD GRID ================= -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- ================= CONTINUE LEARNING ================= -->
+
+                <div class="panel learning-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                YOUR LEARNING
+                            </p>
+
+                            <h2>
+                                Continue Learning
+                            </h2>
+
+                        </div>
+
+                        <a href="#">
+                            View all →
+                        </a>
+
+                    </div>
+
+
+                    <!-- SQL -->
+
+                    <div class="course">
+
+                        <div class="course-icon sql">
+                            SQL
+                        </div>
+
+                        <div class="course-content">
+
+                            <div class="course-title">
+
+                                <strong>
+                                    SQL Fundamentals
+                                </strong>
+
+                                <span>
+                                    72%
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Joins, subqueries & database concepts
+                            </p>
+
+                            <div class="course-progress">
+
+                                <div style="width:72%;"></div>
+
+                            </div>
+
+                            <small>
+                                4 of 6 lessons completed
+                            </small>
+
+                        </div>
+
+
+                        <button class="continue-button">
+                            Continue
+                        </button>
+
+                    </div>
+
+
+                    <!-- PYTHON -->
+
+                    <div class="course">
+
+                        <div class="course-icon python">
+                            PY
+                        </div>
+
+                        <div class="course-content">
+
+                            <div class="course-title">
+
+                                <strong>
+                                    Python for Problem Solving
+                                </strong>
+
+                                <span>
+                                    45%
+                                </span>
+
+                            </div>
+
+                            <p>
+                                Functions, lists & problem solving
+                            </p>
+
+                            <div class="course-progress">
+
+                                <div style="width:45%;"></div>
+
+                            </div>
+
+                            <small>
+                                3 of 7 lessons completed
+                            </small>
+
+                        </div>
+
+
+                        <button class="continue-button">
+                            Continue
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= SKILL DNA ================= -->
+
+                <div class="panel skill-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                AI INSIGHT
+                            </p>
+
+                            <h2>
+                                Your Skill DNA
+                            </h2>
+
+                        </div>
+
+                        <a href="#">
+                            Explore →
+                        </a>
+
+                    </div>
+
+
+                    <div class="skill-overview">
+
+                        <div class="skill-circle">
+
+                            <div class="circle-text">
+
+                                <strong>
+                                    74
+                                </strong>
+
+                                <span>
+                                    /100
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-message">
+
+                            <strong>
+                                Growing steadily
+                            </strong>
+
+                            <p>
+                                Your recent questions and quiz
+                                results show improvement.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- C++ -->
+
+                    <div class="skill-row">
+
+                        <span>
+                            C++
+                        </span>
+
+                        <div class="skill-bar">
+                            <div style="width:82%;"></div>
+                        </div>
+
+                        <strong>
+                            82
+                        </strong>
+
+                    </div>
+
+
+                    <!-- SQL -->
+
+                    <div class="skill-row">
+
+                        <span>
+                            SQL
+                        </span>
+
+                        <div class="skill-bar">
+                            <div style="width:74%;"></div>
+                        </div>
+
+                        <strong>
+                            74
+                        </strong>
+
+                    </div>
+
+
+                    <!-- PYTHON -->
+
+                    <div class="skill-row">
+
+                        <span>
+                            Python
+                        </span>
+
+                        <div class="skill-bar">
+                            <div style="width:61%;"></div>
+                        </div>
+
+                        <strong>
+                            61
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= RECOMMENDED ================= -->
+
+                <div class="panel recommended-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                AI RECOMMENDATION
+                            </p>
+
+                            <h2>
+                                Recommended for You
+                            </h2>
+
+                        </div>
+
+                        <a href="#">
+                            See more →
+                        </a>
+
+                    </div>
+
+
+                    <!-- RECOMMENDATION 1 -->
+
+                    <div class="recommendation">
+
+                        <div class="recommend-icon purple-icon">
+                            ◈
+                        </div>
+
+                        <div class="recommend-content">
+
+                            <strong>
+                                Master SQL Joins
+                            </strong>
+
+                            <p>
+                                Based on your recent quiz performance
+                            </p>
+
+                            <span>
+                                15 min • Beginner
+                            </span>
+
+                        </div>
+
+                        <button>
+                            →
+                        </button>
+
+                    </div>
+
+
+                    <!-- RECOMMENDATION 2 -->
+
+                    <div class="recommendation">
+
+                        <div class="recommend-icon orange-icon">
+                            ⚡
+                        </div>
+
+                        <div class="recommend-content">
+
+                            <strong>
+                                Practice Problem Solving
+                            </strong>
+
+                            <p>
+                                Strengthen your logical thinking skills
+                            </p>
+
+                            <span>
+                                20 min • Practice
+                            </span>
+
+                        </div>
+
+                        <button>
+                            →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= SKILL GAPS ================= -->
+
+                <div class="panel gaps-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <p class="section-label">
+                                NEEDS ATTENTION
+                            </p>
+
+                            <h2>
+                                Skill Gaps
+                            </h2>
+
+                        </div>
+
+                        <a href="#">
+                            View all →
+                        </a>
+
+                    </div>
+
+
+                    <!-- HIGH PRIORITY -->
+
+                    <div class="gap-item">
+
+                        <div class="gap-left">
+
+                            <span class="gap-dot high"></span>
+
+                            <div>
+
+                                <strong>
+                                    SQL Joins
+                                </strong>
+
+                                <p>
+                                    High priority
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="gap-badge high-badge">
+                            32% gap
+                        </span>
+
+                    </div>
+
+
+                    <!-- MEDIUM PRIORITY -->
+
+                    <div class="gap-item">
+
+                        <div class="gap-left">
+
+                            <span class="gap-dot medium"></span>
+
+                            <div>
+
+                                <strong>
+                                    Python Functions
+                                </strong>
+
+                                <p>
+                                    Medium priority
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="gap-badge medium-badge">
+                            24% gap
+                        </span>
+
+                    </div>
+
+
+                    <!-- LOW PRIORITY -->
+
+                    <div class="gap-item">
+
+                        <div class="gap-left">
+
+                            <span class="gap-dot low"></span>
+
+                            <div>
+
+                                <strong>
+                                    Database Design
+                                </strong>
+
+                                <p>
+                                    Low priority
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="gap-badge low-badge">
+                            12% gap
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= RECENT ACTIVITY ================= -->
+
+            <section class="panel activity-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <p class="section-label">
+                            RECENT
+                        </p>
+
+                        <h2>
+                            Your Activity
+                        </h2>
+
+                    </div>
+
+                    <a href="#">
+                        View history →
+                    </a>
+
+                </div>
+
+
+                <!-- ACTIVITY 1 -->
+
+                <div class="activity-item">
+
+                    <div class="activity-icon completed">
+                        ✓
+                    </div>
+
+                    <div class="activity-content">
+
+                        <strong>
+                            Completed SQL Fundamentals Quiz
+                        </strong>
+
+                        <span>
+                            Score: 86% • 2 hours ago
+                        </span>
+
+                    </div>
+
+                    <span class="activity-status">
+                        Completed
+                    </span>
+
+                </div>
+
+
+                <!-- ACTIVITY 2 -->
+
+                <div class="activity-item">
+
+                    <div class="activity-icon asked">
+                        ✦
+                    </div>
+
+                    <div class="activity-content">
+
+                        <strong>
+                            Asked WorkMate AI about SQL Joins
+                        </strong>
+
+                        <span>
+                            AI Assistant • Yesterday
+                        </span>
+
+                    </div>
+
+                    <span class="activity-status">
+                        Learning
+                    </span>
+
+                </div>
+
+
+                <!-- ACTIVITY 3 -->
+
+                <div class="activity-item">
+
+                    <div class="activity-icon updated">
+                        ◈
+                    </div>
+
+                    <div class="activity-content">
+
+                        <strong>
+                            Python skill level updated
+                        </strong>
+
+                        <span>
+                            Skill DNA • 2 days ago
+                        </span>
+
+                    </div>
+
+                    <span class="activity-status">
+                        +6%
+                    </span>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="auth.js" data-auth="protected"></script>
+</body>
+
+</html>

@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WorkMate AI | Settings</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f6f8;
+            color: #242424;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 245px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: #242424;
+            color: white;
+            padding: 28px 16px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 0 10px;
+            margin-bottom: 42px;
+        }
+
+        .logo-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            background: #f97316;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .logo h2 {
+            font-size: 19px;
+        }
+
+        .logo h2 span {
+            color: #f97316;
+        }
+
+        .logo small {
+            display: block;
+            color: #888;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        /* ================= NAV ================= */
+
+        .nav {
+            flex: 1;
+        }
+
+        .nav-title {
+            color: #777;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            padding-left: 16px;
+            margin-bottom: 10px;
+        }
+
+        .nav-title:not(:first-child) {
+            margin-top: 28px;
+        }
+
+        .nav-item {
+            height: 45px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 0 13px;
+            margin-bottom: 4px;
+            border-radius: 9px;
+            color: #aaa;
+            font-size: 13px;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,.06);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: #f97316;
+            color: white;
+        }
+
+        /* ================= BOTTOM ================= */
+
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+
+        .help-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            background: rgba(255,255,255,.06);
+        }
+
+        .help-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(249,115,22,.16);
+            color: #fb923c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .help-card strong {
+            font-size: 12px;
+        }
+
+        .help-card p {
+            color: #888;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 7px 0;
+            border-top: 1px solid #3a3a3a;
+        }
+
+        .avatar,
+        .top-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #fed7aa;
+            color: #9a3412;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .profile-info span {
+            display: block;
+            color: #888;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        .more {
+            color: #777;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            margin-left: 245px;
+            min-height: 100vh;
+        }
+
+        /* ================= TOPBAR ================= */
+
+        .topbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-title strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .top-title span {
+            display: block;
+            color: #999;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .notification {
+            border: none;
+            background: transparent;
+            font-size: 17px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #f97316;
+            border-radius: 50%;
+            top: 0;
+            right: 0;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .content {
+            max-width: 1100px;
+            margin: auto;
+            padding: 32px 35px 60px;
+        }
+
+        .label {
+            color: #aaa;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            margin-bottom: 7px;
+        }
+
+        .page-header {
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            font-size: 30px;
+            letter-spacing: -.7px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* ================= SETTINGS LAYOUT ================= */
+
+        .settings-layout {
+            display: grid;
+            grid-template-columns: 210px 1fr;
+            gap: 20px;
+        }
+
+        /* ================= SETTINGS MENU ================= */
+
+        .settings-menu {
+            background: white;
+            border: 1px solid #e7e7e7;
+            border-radius: 14px;
+            padding: 10px;
+            height: fit-content;
+        }
+
+        .settings-menu button {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 12px 13px;
+            border-radius: 9px;
+            text-align: left;
+            color: #777;
+            font-size: 11px;
+            cursor: pointer;
+            margin-bottom: 3px;
+        }
+
+        .settings-menu button:hover {
+            background: #fff5ed;
+            color: #f97316;
+        }
+
+        .settings-menu button.active {
+            background: #fff0e5;
+            color: #ea580c;
+            font-weight: 700;
+        }
+
+        /* ================= SETTINGS CONTENT ================= */
+
+        .settings-card {
+            background: white;
+            border: 1px solid #e7e7e7;
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 18px;
+        }
+
+        .settings-card h2 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .settings-card > p {
+            color: #999;
+            font-size: 11px;
+            margin-bottom: 22px;
+        }
+
+        /* ================= PROFILE ================= */
+
+        .profile-edit {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-bottom: 22px;
+            margin-bottom: 22px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .big-avatar {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: #fed7aa;
+            color: #9a3412;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .profile-edit h3 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .profile-edit span {
+            color: #999;
+            font-size: 10px;
+        }
+
+        .change-photo {
+            margin-left: auto;
+            padding: 9px 13px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            color: #555;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .change-photo:hover {
+            border-color: #f97316;
+            color: #f97316;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 4px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            color: #555;
+            font-size: 10px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 42px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 0 12px;
+            outline: none;
+            font-size: 11px;
+            color: #444;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249,115,22,.08);
+        }
+
+        /* ================= PREFERENCES ================= */
+
+        .setting-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-info strong {
+            display: block;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .setting-info span {
+            color: #999;
+            font-size: 9px;
+        }
+
+        /* ================= TOGGLE ================= */
+
+        .toggle {
+            width: 42px;
+            height: 23px;
+            border-radius: 20px;
+            background: #ddd;
+            position: relative;
+            cursor: pointer;
+            transition: .2s;
+            flex-shrink: 0;
+        }
+
+        .toggle::after {
+            content: "";
+            position: absolute;
+            width: 17px;
+            height: 17px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.2);
+            transition: .2s;
+        }
+
+        .toggle.active {
+            background: #f97316;
+        }
+
+        .toggle.active::after {
+            left: 22px;
+        }
+
+        /* ================= SAVE ================= */
+
+        .save-area {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .cancel-btn {
+            border: 1px solid #ddd;
+            background: white;
+            color: #666;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            border: none;
+            background: #f97316;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .save-btn:hover {
+            background: #ea580c;
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(249,115,22,.22);
+        }
+
+        /* ================= DANGER ================= */
+
+        .danger-card {
+            border: 1px solid #fee2e2;
+        }
+
+        .danger-card h2 {
+            color: #dc2626;
+        }
+
+        .delete-btn {
+            margin-top: 5px;
+            border: 1px solid #fecaca;
+            background: #fff;
+            color: #dc2626;
+            padding: 9px 15px;
+            border-radius: 8px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #fef2f2;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            .sidebar {
+                width: 210px;
+            }
+
+            .main {
+                margin-left: 210px;
+            }
+
+            .settings-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-menu {
+                display: flex;
+                overflow-x: auto;
+                gap: 5px;
+            }
+
+            .settings-menu button {
+                min-width: 120px;
+                margin-bottom: 0;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .content {
+                padding: 25px 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .profile-edit {
+                align-items: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .change-photo {
+                margin-left: 0;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-box">
+                W
+            </div>
+
+            <div>
+
+                <h2>
+                    Work<span>Mate</span>
+                </h2>
+
+                <small>
+                    AI Learning
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <nav class="nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="ai.html" class="nav-item">
+                <span>✦</span>
+                AI Assistant
+            </a>
+
+            <a href="dna.html" class="nav-item">
+                <span>◈</span>
+                Skill DNA
+            </a>
+
+            <a href="gap.html" class="nav-item">
+                <span>⚡</span>
+                Skill Gaps
+            </a>
+
+            <p class="nav-title">LEARNING</p>
+
+            <a href="path.html" class="nav-item">
+                <span>▣</span>
+                Learning Path
+            </a>
+
+            <a href="quiz.html" class="nav-item">
+                <span>✓</span>
+                AI Quiz
+            </a>
+
+            <a href="progress.html" class="nav-item">
+                <span>◔</span>
+                Progress
+            </a>
+
+            <p class="nav-title">SYSTEM</p>
+
+            <a href="settings.html" class="nav-item active">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    ?
+                </div>
+
+                <div>
+
+                    <strong>
+                        Need help?
+                    </strong>
+
+                    <p>
+                        Ask WorkMate AI
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="avatar">
+                    AS
+                </div>
+
+                <div class="profile-info">
+
+                    <strong>
+                        Aparna
+                    </strong>
+
+                    <span>
+                        IT Student
+                    </span>
+
+                </div>
+
+                <span class="more">
+                    •••
+                </span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="top-title">
+
+                <strong>
+                    Settings
+                </strong>
+
+                <span>
+                    Manage your WorkMate AI experience
+                </span>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+
+                    🔔
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+                <div class="top-avatar">
+                    AS
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="content">
+
+
+            <section class="page-header">
+
+                <p class="label">
+                    ACCOUNT & PREFERENCES
+                </p>
+
+                <h1>
+                    Settings
+                </h1>
+
+                <p class="subtitle">
+                    Personalize your profile, learning experience and notifications.
+                </p>
+
+            </section>
+
+
+
+            <div class="settings-layout">
+
+
+                <!-- SETTINGS MENU -->
+
+                <div class="settings-menu">
+
+                    <button class="active">
+                        👤 &nbsp; Profile
+                    </button>
+
+                    <button>
+                        ⚙ &nbsp; Preferences
+                    </button>
+
+                    <button>
+                        🔔 &nbsp; Notifications
+                    </button>
+
+                    <button>
+                        🔒 &nbsp; Security
+                    </button>
+
+                </div>
+
+
+
+                <!-- SETTINGS CONTENT -->
+
+                <div>
+
+
+                    <!-- PROFILE -->
+
+                    <section class="settings-card">
+
+                        <h2>
+                            Profile Information
+                        </h2>
+
+                        <p>
+                            Update your personal information and learning profile.
+                        </p>
+
+
+                        <div class="profile-edit">
+
+                            <div class="big-avatar">
+                                AS
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Aparna
+                                </h3>
+
+                                <span>
+                                    IT Student • WorkMate AI learner
+                                </span>
+
+                            </div>
+
+                            <button class="change-photo">
+                                Change photo
+                            </button>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Full Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="Aparna"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Email Address
+                                </label>
+
+                                <input
+                                    type="email"
+                                    value="aparna@example.com"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Role
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="IT Student"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Experience Level
+                                </label>
+
+                                <select>
+
+                                    <option>Beginner</option>
+                                    <option selected>Intermediate</option>
+                                    <option>Advanced</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>
+                                    Learning Goal
+                                </label>
+
+                                <input
+                                    type="text"
+                                    value="Become job-ready in software development"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="save-area">
+
+                            <button class="cancel-btn">
+                                Cancel
+                            </button>
+
+                            <button class="save-btn" onclick="saveSettings()">
+                                Save Changes
+                            </button>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- PREFERENCES -->
+
+                    <section class="settings-card">
+
+                        <h2>
+                            Learning Preferences
+                        </h2>
+
+                        <p>
+                            Customize how WorkMate AI adapts your learning experience.
+                        </p>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+
+                                <strong>
+                                    Adaptive Learning
+                                </strong>
+
+                                <span>
+                                    Automatically adjust learning difficulty based on quiz performance.
+                                </span>
+
+                            </div>
+
+                            <div class="toggle active"
+                                 onclick="toggleSetting(this)">
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+
+                                <strong>
+                                    Skill Gap Recommendations
+                                </strong>
+
+                                <span>
+                                    Show personalized recommendations when a skill gap is detected.
+                                </span>
+
+                            </div>
+
+                            <div class="toggle active"
+                                 onclick="toggleSetting(this)">
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+
+                                <strong>
+                                    AI Learning Insights
+                                </strong>
+
+                                <span>
+                                    Allow WorkMate AI to generate insights from your learning activity.
+                                </span>
+
+                            </div>
+
+                            <div class="toggle active"
+                                 onclick="toggleSetting(this)">
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+
+                                <strong>
+                                    Weekly Progress Summary
+                                </strong>
+
+                                <span>
+                                    Receive a summary of your learning progress every week.
+                                </span>
+
+                            </div>
+
+                            <div class="toggle"
+                                 onclick="toggleSetting(this)">
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- NOTIFICATIONS -->
+
+                    <section class="settings-card">
+
+                        <h2>
+                            Notifications
+                        </h2>
+
+                        <p>
+                            Choose what updates you want to receive.
+                        </p>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+
+                                <strong>
+                                    Learning Reminders
+                                </strong>
+
+                                <span>
+                                    Get reminders to continue your learning path.
+                                </span>
+
+                            </div>
+
+                            <div class="toggle active"
+                                 onclick="toggleSetting(this)">
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+
+                                <strong>
+                                    Quiz Results
+                                </strong>
+
+                                <span>
+                                    Receive updates after completing an AI quiz.
+                                </span>
+
+                            </div>
+
+                            <div class="toggle active"
+                                 onclick="toggleSetting(this)">
+                            </div>
+
+                        </div>
+
+
+                        <div class="setting-row">
+
+                            <div class="setting-info">
+
+                                <strong>
+                                    New Skill Insights
+                                </strong>
+
+                                <span>
+                                    Notify me when my Skill DNA changes.
+                                </span>
+
+                            </div>
+
+                            <div class="toggle active"
+                                 onclick="toggleSetting(this)">
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- DANGER ZONE -->
+
+                    <section class="settings-card danger-card">
+
+                        <h2>
+                            Account Actions
+                        </h2>
+
+                        <p>
+                            Manage your account data and account access.
+                        </p>
+
+                        <button class="delete-btn"
+                                onclick="deleteAccount()">
+                            Delete Account
+                        </button>
+
+                    </section>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="auth.js" data-auth="protected"></script>
+<script>
+
+        function toggleSetting(element) {
+
+            element.classList.toggle("active");
+
+        }
+
+
+        function saveSettings() {
+
+            alert("✓ Your WorkMate AI settings have been saved!");
+
+        }
+
+
+        function deleteAccount() {
+
+            const confirmDelete =
+                confirm(
+                    "Are you sure you want to delete your WorkMate AI account?"
+                );
+
+            if (confirmDelete) {
+
+                alert(
+                    "Account deletion request submitted."
+                );
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

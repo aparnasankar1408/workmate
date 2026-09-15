@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WorkMate AI - Learning Path</title>
+
+    <link rel="stylesheet" href="path.css">
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">W</div>
+
+            <div class="brand-name">
+                Work<span>Mate</span> AI
+            </div>
+        </div>
+
+        <nav class="nav-menu">
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="ai.html" class="nav-item">
+                <span class="nav-icon">✦</span>
+                AI Assistant
+            </a>
+
+            <a href="dna.html" class="nav-item">
+                <span class="nav-icon">◈</span>
+                Skill DNA
+            </a>
+
+            <a href="gap.html" class="nav-item">
+                <span class="nav-icon">△</span>
+                Skill Gaps
+            </a>
+
+            <a href="path.html" class="nav-item active">
+                <span class="nav-icon">→</span>
+                Learning Path
+            </a>
+
+            <a href="quiz.html" class="nav-item">
+                <span class="nav-icon">✓</span>
+                AI Quiz
+            </a>
+
+            <a href="progress.html" class="nav-item">
+                <span class="nav-icon">◔</span>
+                Progress
+            </a>
+
+            <a href="settings.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div class="page-small-title">
+                Learning Path
+            </div>
+
+            <div class="profile">
+
+                <div class="profile-circle">
+                    AS
+                </div>
+
+                <div class="profile-name">
+                    Aparna
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="content">
+
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
+
+                <h1>
+                    Your Learning Path
+                </h1>
+
+                <p>
+                    A personalized path generated from your current skill gaps.
+                </p>
+
+            </div>
+
+
+            <!-- ================= HERO ================= -->
+
+            <section class="hero-card">
+
+                <div class="hero-left">
+
+                    <div class="side-label">
+                        AI-GENERATED LEARNING PATH
+                    </div>
+
+                    <h2 id="heroTitle">
+                        Become confident in SQL & Databases
+                    </h2>
+
+                    <p id="heroDescription">
+                        Follow this learning path step by step to strengthen
+                        your SQL knowledge and close your current skill gap.
+                    </p>
+
+                </div>
+
+                <div class="hero-progress" id="heroProgress">
+
+                    <div class="progress-inner">
+
+                        <div class="progress-number" id="progressNumber">
+                            29%
+                        </div>
+
+                        <div class="progress-text">
+                            COMPLETE
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= VIDEO ================= -->
+
+            <section class="video-section" id="videoSection">
+
+                <div class="video-header">
+
+                    <div>
+
+                        <p class="side-label">
+                            CURRENT LESSON
+                        </p>
+
+                        <h2 id="videoTitle">
+                            SQL Basics
+                        </h2>
+
+                        <p id="videoDescription">
+                            Learn the fundamentals of SQL and understand
+                            how databases work.
+                        </p>
+
+                    </div>
+
+                    <span class="video-duration" id="videoDuration">
+                        ◷ 20 min
+                    </span>
+
+                </div>
+
+
+                <!-- VIDEO -->
+
+                <div class="video-container">
+
+                    <iframe
+                        id="youtubeVideo"
+                        src=""
+                        title="SQL Learning Video"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+
+                <!-- VIDEO FOOTER -->
+
+                <div class="video-footer">
+
+                    <div>
+
+                        <strong id="lessonFooterTitle">
+                            Watch the lesson
+                        </strong>
+
+                        <p id="lessonFooterText">
+                            Complete this lesson before moving to the next one.
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="complete-button"
+                        id="completeLesson">
+
+                        ✓ Mark Complete & Continue
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ROADMAP HEADER ================= -->
+
+            <div class="section-heading">
+
+                <h2>
+                    Learning Roadmap
+                </h2>
+
+                <span id="stageCounter">
+                    0 of 6 lessons completed
+                </span>
+
+            </div>
+
+
+            <!-- ================= ROADMAP ================= -->
+
+            <div class="path-layout">
+
+                <div class="roadmap" id="roadmap">
+
+
+                    <!-- STAGE 1 -->
+
+                    <div class="stage current" data-stage="0">
+
+                        <div class="stage-dot">
+                            1
+                        </div>
+
+                        <div class="stage-line"></div>
+
+                        <div class="stage-content">
+
+                            <div class="stage-title">
+                                SQL Basics
+                            </div>
+
+                            <div class="stage-info">
+
+                                <span>
+                                    1 video
+                                </span>
+
+                                <span>
+                                    20 min
+                                </span>
+
+                                <span>
+                                    Beginner
+                                </span>
+
+                            </div>
+
+                            <span class="stage-status">
+                                Current
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STAGE 2 -->
+
+                    <div class="stage locked" data-stage="1">
+
+                        <div class="stage-dot">
+                            🔒
+                        </div>
+
+                        <div class="stage-line"></div>
+
+                        <div class="stage-content">
+
+                            <div class="stage-title">
+                                Filtering & Sorting
+                            </div>
+
+                            <div class="stage-info">
+
+                                <span>
+                                    1 video
+                                </span>
+
+                                <span>
+                                    25 min
+                                </span>
+
+                                <span>
+                                    Beginner
+                                </span>
+
+                            </div>
+
+                            <span class="stage-status">
+                                Locked
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STAGE 3 -->
+
+                    <div class="stage locked" data-stage="2">
+
+                        <div class="stage-dot">
+                            🔒
+                        </div>
+
+                        <div class="stage-line"></div>
+
+                        <div class="stage-content">
+
+                            <div class="stage-title">
+                                JOIN Operations
+                            </div>
+
+                            <div class="stage-info">
+
+                                <span>
+                                    1 video
+                                </span>
+
+                                <span>
+                                    30 min
+                                </span>
+
+                                <span>
+                                    Intermediate
+                                </span>
+
+                            </div>
+
+                            <span class="stage-status">
+                                Locked
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STAGE 4 -->
+
+                    <div class="stage locked" data-stage="3">
+
+                        <div class="stage-dot">
+                            🔒
+                        </div>
+
+                        <div class="stage-line"></div>
+
+                        <div class="stage-content">
+
+                            <div class="stage-title">
+                                Aggregation & GROUP BY
+                            </div>
+
+                            <div class="stage-info">
+
+                                <span>
+                                    1 video
+                                </span>
+
+                                <span>
+                                    25 min
+                                </span>
+
+                                <span>
+                                    Intermediate
+                                </span>
+
+                            </div>
+
+                            <span class="stage-status">
+                                Locked
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STAGE 5 -->
+
+                    <div class="stage locked" data-stage="4">
+
+                        <div class="stage-dot">
+                            🔒
+                        </div>
+
+                        <div class="stage-line"></div>
+
+                        <div class="stage-content">
+
+                            <div class="stage-title">
+                                Subqueries
+                            </div>
+
+                            <div class="stage-info">
+
+                                <span>
+                                    1 video
+                                </span>
+
+                                <span>
+                                    30 min
+                                </span>
+
+                                <span>
+                                    Intermediate
+                                </span>
+
+                            </div>
+
+                            <span class="stage-status">
+                                Locked
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STAGE 6 -->
+
+                    <div class="stage locked" data-stage="5">
+
+                        <div class="stage-dot">
+                            🔒
+                        </div>
+
+                        <div class="stage-line"></div>
+
+                        <div class="stage-content">
+
+                            <div class="stage-title">
+                                Real-World SQL Practice
+                            </div>
+
+                            <div class="stage-info">
+
+                                <span>
+                                    1 video
+                                </span>
+
+                                <span>
+                                    35 min
+                                </span>
+
+                                <span>
+                                    Practical
+                                </span>
+
+                            </div>
+
+                            <span class="stage-status">
+                                Locked
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FINAL ASSESSMENT -->
+
+                    <div
+                        class="stage locked final-stage"
+                        data-stage="6">
+
+                        <div class="stage-dot">
+                            🔒
+                        </div>
+
+                        <div class="stage-content">
+
+                            <div class="stage-title">
+                                Final AI Assessment
+                            </div>
+
+                            <div class="stage-info">
+
+                                <span>
+                                    AI Quiz
+                                </span>
+
+                                <span>
+                                    20 min
+                                </span>
+
+                            </div>
+
+                            <span class="stage-status">
+                                Locked
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= RIGHT COLUMN ================= -->
+
+                <div class="right-column">
+
+
+                    <!-- UP NEXT -->
+
+                    <div class="side-card">
+
+                        <h3>
+                            Up Next
+                        </h3>
+
+                        <div
+                            class="up-next-title"
+                            id="upNextTitle">
+
+                            Filtering & Sorting
+
+                        </div>
+
+                        <div
+                            class="up-next-info"
+                            id="upNextInfo">
+
+                            Complete the current lesson to unlock.
+
+                        </div>
+
+                        <button
+                            class="continue-button"
+                            id="continueButton">
+
+                            Continue Learning →
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- SQL PROGRESS -->
+
+                    <div class="side-card">
+
+                        <h3>
+                            SQL Progress
+                        </h3>
+
+
+                        <div class="skill-progress-row">
+
+                            <div class="skill-progress-top">
+
+                                <span>
+                                    Current Skill
+                                </span>
+
+                                <strong id="skillCurrent">
+                                    42%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    id="skillProgressFill">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-progress-row">
+
+                            <div class="skill-progress-top">
+
+                                <span>
+                                    Target Skill
+                                </span>
+
+                                <strong>
+                                    80%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill target-fill">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-progress-row">
+
+                            <div class="skill-progress-top">
+
+                                <span>
+                                    Path Completion
+                                </span>
+
+                                <strong id="pathCompletion">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    id="pathProgressFill">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TIP -->
+
+                    <div class="side-card tip-card">
+
+                        <h3>
+                            WorkMate AI Tip
+                        </h3>
+
+                        <p id="adaptiveTip">
+                            Start with SQL Basics. Complete each lesson
+                            in sequence to unlock the next topic.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= EVIDENCE ================= -->
+
+            <div class="evidence">
+
+                <strong>
+                    Learning Path Evidence:
+                </strong>
+
+                This path is based on your current SQL skill level,
+                identified skill gap, learning activity and quiz performance.
+
+            </div>
+
+        </div>
+
+    </main>
+    <iframe
+    id="youtubeVideo"
+    width="100%"
+    height="450"
+    src=""
+    title="SQL Learning Video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+<iframe
+    id="youtubeVideo"
+    width="100%"
+    height="450"
+    src="https://www.youtube-nocookie.com/embed/7cjVj1ZyzyE"
+    title="SQL Learning Video"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+
+
+    <!-- ================= NOTIFICATION ================= -->
+
+    <div
+        class="notification"
+        id="notification">
+    </div>
+
+
+    <!-- AUTH -->
+
+    <script
+        src="auth.js"
+        data-auth="protected">
+    </script>
+
+    <!-- PATH JS -->
+
+    <script src="path.js"></script>
+
+</body>
+
+</html>

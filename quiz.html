@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WorkMate AI | AI Quiz</title>
+
+    <style>
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f6f8;
+            color: #242424;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 245px;
+            height: 100vh;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            background: #242424;
+            color: white;
+
+            padding: 28px 16px 20px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            padding: 0 10px;
+            margin-bottom: 42px;
+        }
+
+        .logo-box {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 11px;
+
+            background: #f97316;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .logo h2 {
+            font-size: 19px;
+        }
+
+        .logo h2 span {
+            color: #f97316;
+        }
+
+        .logo small {
+            display: block;
+            color: #888;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+
+        /* =========================
+           NAV
+        ========================= */
+
+        .nav {
+            flex: 1;
+        }
+
+        .nav-title {
+            color: #777;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 1.2px;
+
+            padding-left: 16px;
+
+            margin-bottom: 10px;
+        }
+
+        .nav-title:not(:first-child) {
+            margin-top: 28px;
+        }
+
+        .nav-item {
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 0 13px;
+
+            margin-bottom: 4px;
+
+            border-radius: 9px;
+
+            color: #aaa;
+
+            font-size: 13px;
+
+            text-decoration: none;
+
+            transition: .2s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,.06);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: #f97316;
+            color: white;
+        }
+
+
+        /* =========================
+           SIDEBAR BOTTOM
+        ========================= */
+
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+
+        .help-card {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 12px;
+
+            margin-bottom: 18px;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.06);
+        }
+
+        .help-icon {
+            width: 32px;
+            height: 32px;
+
+            border-radius: 8px;
+
+            background: rgba(249,115,22,.16);
+
+            color: #fb923c;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .help-card strong {
+            font-size: 12px;
+        }
+
+        .help-card p {
+            color: #888;
+
+            font-size: 10px;
+
+            margin-top: 3px;
+        }
+
+
+        .profile {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 7px 0;
+
+            border-top: 1px solid #3a3a3a;
+        }
+
+        .avatar,
+        .top-avatar {
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+
+            background: #fed7aa;
+
+            color: #9a3412;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .profile-info span {
+            display: block;
+
+            color: #888;
+
+            font-size: 10px;
+
+            margin-top: 2px;
+        }
+
+        .more {
+            color: #777;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            margin-left: 245px;
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           TOPBAR
+        ========================= */
+
+        .topbar {
+            height: 72px;
+
+            background: white;
+
+            border-bottom: 1px solid #e8e8e8;
+
+            padding: 0 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 10;
+        }
+
+        .top-title strong {
+            display: block;
+
+            font-size: 14px;
+
+            color: #333;
+        }
+
+        .top-title span {
+            display: block;
+
+            color: #999;
+
+            font-size: 10px;
+
+            margin-top: 3px;
+        }
+
+        .top-actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+        }
+
+        .notification {
+            border: none;
+
+            background: transparent;
+
+            font-size: 17px;
+
+            position: relative;
+        }
+
+        .notification-dot {
+            position: absolute;
+
+            width: 6px;
+            height: 6px;
+
+            background: #f97316;
+
+            border-radius: 50%;
+
+            top: 0;
+            right: 0;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 32px 35px 60px;
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 24px;
+        }
+
+        .label {
+            color: #aaa;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+
+            margin-bottom: 7px;
+        }
+
+        .page-header h1 {
+            font-size: 30px;
+
+            letter-spacing: -.7px;
+
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #999;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           AI QUIZ HERO
+        ========================= */
+
+        .quiz-hero {
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(249,115,22,.30),
+                    transparent 30%
+                ),
+                #292929;
+
+            color: white;
+
+            border-radius: 15px;
+
+            padding: 25px 28px;
+
+            margin-bottom: 22px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .quiz-hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border: 1px solid rgba(255,255,255,.07);
+
+            border-radius: 50%;
+
+            right: -110px;
+            top: -150px;
+        }
+
+        .hero-inner {
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .ai-label {
+            color: #fb923c;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.3px;
+
+            margin-bottom: 9px;
+        }
+
+        .quiz-hero h2 {
+            font-size: 24px;
+
+            margin-bottom: 7px;
+        }
+
+        .quiz-hero p {
+            color: #bbb;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            max-width: 650px;
+        }
+
+
+        /* QUIZ STATS */
+
+        .quiz-stats {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .quiz-stat {
+            min-width: 82px;
+
+            padding: 12px;
+
+            text-align: center;
+
+            background: rgba(255,255,255,.07);
+
+            border: 1px solid rgba(255,255,255,.08);
+
+            border-radius: 9px;
+        }
+
+        .quiz-stat strong {
+            display: block;
+
+            font-size: 17px;
+        }
+
+        .quiz-stat span {
+            color: #999;
+
+            font-size: 8px;
+        }
+
+
+        /* =========================
+           QUIZ LAYOUT
+        ========================= */
+
+        .quiz-layout {
+            display: grid;
+
+            grid-template-columns: minmax(0, 1fr) 270px;
+
+            gap: 18px;
+
+            align-items: start;
+        }
+
+
+        /* =========================
+           QUESTION CARD
+        ========================= */
+
+        .quiz-card {
+            background: white;
+
+            border: 1px solid #e7e7e7;
+
+            border-radius: 14px;
+
+            padding: 25px;
+        }
+
+
+        /* PROGRESS */
+
+        .question-top {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 13px;
+        }
+
+        .question-number {
+            color: #777;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+        .question-score {
+            color: #f97316;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+        .progress {
+            width: 100%;
+
+            height: 6px;
+
+            background: #eee;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            margin-bottom: 28px;
+        }
+
+        .progress-bar {
+            height: 100%;
+
+            width: 40%;
+
+            background: #f97316;
+
+            border-radius: 20px;
+
+            transition: .3s;
+        }
+
+
+        /* QUESTION */
+
+        .question-card-label {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            background: #fff0e5;
+
+            color: #ea580c;
+
+            border-radius: 20px;
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            margin-bottom: 12px;
+        }
+
+        .question {
+            font-size: 19px;
+
+            line-height: 1.45;
+
+            color: #292929;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* OPTIONS */
+
+        .options {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .option {
+            width: 100%;
+
+            min-height: 54px;
+
+            border: 1px solid #e3e3e3;
+
+            background: white;
+
+            border-radius: 10px;
+
+            padding: 10px 14px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            text-align: left;
+
+            transition: .2s;
+        }
+
+        .option:hover {
+            border-color: #f97316;
+
+            background: #fffaf6;
+        }
+
+        .option.selected {
+            border-color: #f97316;
+
+            background: #fff4eb;
+
+            box-shadow: 0 0 0 2px rgba(249,115,22,.08);
+        }
+
+        .option-letter {
+            width: 31px;
+            height: 31px;
+
+            border-radius: 8px;
+
+            background: #f3f3f3;
+
+            color: #777;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            flex-shrink: 0;
+        }
+
+        .option.selected .option-letter {
+            background: #f97316;
+
+            color: white;
+        }
+
+        .option-text {
+            color: #555;
+
+            font-size: 11px;
+
+            line-height: 1.4;
+        }
+
+
+        /* ACTIONS */
+
+        .quiz-actions {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 24px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #eee;
+        }
+
+        .skip-button {
+            border: none;
+
+            background: transparent;
+
+            color: #999;
+
+            font-size: 10px;
+
+            font-weight: 600;
+        }
+
+        .next-button {
+            border: none;
+
+            background: #f97316;
+
+            color: white;
+
+            border-radius: 8px;
+
+            padding: 12px 19px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            transition: .2s;
+        }
+
+        .next-button:hover {
+            background: #ea580c;
+
+            transform: translateY(-1px);
+
+            box-shadow: 0 6px 16px rgba(249,115,22,.18);
+        }
+
+
+        /* =========================
+           RIGHT SIDE
+        ========================= */
+
+        .side-column {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+        .side-card {
+            background: white;
+
+            border: 1px solid #e7e7e7;
+
+            border-radius: 13px;
+
+            padding: 18px;
+        }
+
+        .side-label {
+            color: #aaa;
+
+            font-size: 8px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 7px;
+        }
+
+        .side-card h3 {
+            font-size: 14px;
+
+            color: #333;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* SKILL */
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 6px;
+        }
+
+        .skill-top span,
+        .skill-top strong {
+            font-size: 9px;
+        }
+
+        .skill-top span {
+            color: #777;
+        }
+
+        .skill-top strong {
+            color: #f97316;
+        }
+
+        .skill-bar {
+            height: 5px;
+
+            background: #eee;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+        }
+
+        .skill-bar div {
+            height: 100%;
+
+            background: #f97316;
+
+            border-radius: 20px;
+        }
+
+
+        /* AI ADAPTIVE CARD */
+
+        .adaptive-card {
+            background: #292929;
+
+            color: white;
+        }
+
+        .adaptive-card .side-label {
+            color: #fb923c;
+        }
+
+        .adaptive-card h3 {
+            color: white;
+        }
+
+        .adaptive-card p {
+            color: #aaa;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        /* TIP */
+
+        .tip {
+            padding: 12px;
+
+            margin-top: 12px;
+
+            border-radius: 9px;
+
+            background: rgba(249,115,22,.10);
+
+            border: 1px solid rgba(249,115,22,.16);
+
+            color: #fdb47d;
+
+            font-size: 9px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           RESULT
+        ========================= */
+
+        .result {
+            display: none;
+
+            text-align: center;
+
+            padding: 45px 20px;
+        }
+
+        .result-icon {
+            width: 65px;
+            height: 65px;
+
+            border-radius: 50%;
+
+            background: #ecfdf3;
+
+            color: #16a34a;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 15px;
+
+            font-size: 28px;
+        }
+
+        .result h2 {
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+        .result p {
+            color: #999;
+
+            font-size: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .result-score {
+            color: #f97316;
+
+            font-size: 35px;
+
+            font-weight: 800;
+
+            margin-bottom: 20px;
+        }
+
+        .restart {
+            border: none;
+
+            background: #f97316;
+
+            color: white;
+
+            padding: 11px 20px;
+
+            border-radius: 8px;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1050px) {
+
+            .sidebar {
+                width: 215px;
+            }
+
+            .main {
+                margin-left: 215px;
+            }
+
+            .quiz-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .side-column {
+                display: grid;
+
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 750px) {
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .content {
+                padding: 25px 18px 40px;
+            }
+
+            .page-header {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+            }
+
+            .hero-inner {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+            .quiz-stats {
+                width: 100%;
+            }
+
+            .quiz-stat {
+                flex: 1;
+            }
+
+            .side-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .page-header h1 {
+                font-size: 25px;
+            }
+
+            .quiz-card {
+                padding: 18px;
+            }
+
+            .question {
+                font-size: 17px;
+            }
+
+            .quiz-actions {
+                gap: 10px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-box">
+                W
+            </div>
+
+            <div>
+
+                <h2>
+                    Work<span>Mate</span>
+                </h2>
+
+                <small>
+                    AI Learning
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <nav class="nav">
+
+            <p class="nav-title">
+                MAIN
+            </p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="ai.html" class="nav-item">
+                <span>✦</span>
+                AI Assistant
+            </a>
+
+            <a href="dna.html" class="nav-item">
+                <span>◈</span>
+                Skill DNA
+            </a>
+
+            <a href="gap.html" class="nav-item">
+                <span>⚡</span>
+                Skill Gaps
+            </a>
+
+
+            <p class="nav-title">
+                LEARNING
+            </p>
+
+            <a href="path.html" class="nav-item">
+                <span>▣</span>
+                Learning Path
+            </a>
+
+            <a href="quiz.html" class="nav-item active">
+                <span>✓</span>
+                AI Quiz
+            </a>
+
+            <a href="progress.html" class="nav-item">
+                <span>◔</span>
+                Progress
+            </a>
+
+
+            <p class="nav-title">
+                SYSTEM
+            </p>
+
+            <a href="settings.html" class="nav-item">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    ?
+                </div>
+
+                <div>
+
+                    <strong>
+                        Need help?
+                    </strong>
+
+                    <p>
+                        Ask WorkMate AI
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="avatar">
+                    AS
+                </div>
+
+                <div class="profile-info">
+
+                    <strong>
+                        Aparna
+                    </strong>
+
+                    <span>
+                        IT Student
+                    </span>
+
+                </div>
+
+                <span class="more">
+                    •••
+                </span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="top-title">
+
+                <strong>
+                    AI Quiz
+                </strong>
+
+                <span>
+                    Test your knowledge and improve your Skill DNA
+                </span>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="top-avatar">
+                    AS
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+
+            <!-- PAGE HEADER -->
+
+            <section class="page-header">
+
+                <div>
+
+                    <p class="label">
+                        ADAPTIVE ASSESSMENT
+                    </p>
+
+                    <h1>
+                        AI Quiz
+                    </h1>
+
+                    <p class="subtitle">
+                        Test your skills with questions adapted to your learning level.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- HERO -->
+
+            <section class="quiz-hero">
+
+                <div class="hero-inner">
+
+                    <div>
+
+                        <p class="ai-label">
+                            ✦ WORKMATE AI
+                        </p>
+
+                        <h2>
+                            SQL & Database Assessment
+                        </h2>
+
+                        <p>
+                            This quiz was generated from your current Skill DNA
+                            and recent learning activity. Your performance will
+                            help WorkMate AI update your skill level and adapt
+                            your learning path.
+                        </p>
+
+                    </div>
+
+
+                    <div class="quiz-stats">
+
+                        <div class="quiz-stat">
+
+                            <strong>
+                                10
+                            </strong>
+
+                            <span>
+                                QUESTIONS
+                            </span>
+
+                        </div>
+
+                        <div class="quiz-stat">
+
+                            <strong>
+                                15m
+                            </strong>
+
+                            <span>
+                                TIME
+                            </span>
+
+                        </div>
+
+                        <div class="quiz-stat">
+
+                            <strong>
+                                70%
+                            </strong>
+
+                            <span>
+                                TARGET
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- QUIZ -->
+
+            <section class="quiz-layout">
+
+
+                <!-- QUESTION -->
+
+                <div class="quiz-card" id="quizCard">
+
+                    <div class="question-top">
+
+                        <span class="question-number" id="questionNumber">
+                            QUESTION 4 OF 10
+                        </span>
+
+                        <span class="question-score">
+                            +10 XP
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            id="progressBar"
+                        ></div>
+
+                    </div>
+
+
+                    <span class="question-card-label">
+                        SQL • JOIN OPERATIONS
+                    </span>
+
+
+                    <h2 class="question" id="question">
+
+                        Which SQL JOIN returns all records
+                        from the left table and matching records
+                        from the right table?
+
+                    </h2>
+
+
+                    <div class="options" id="options">
+
+                        <button
+                            class="option"
+                            onclick="selectOption(this)"
+                        >
+
+                            <span class="option-letter">
+                                A
+                            </span>
+
+                            <span class="option-text">
+                                INNER JOIN
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="option"
+                            onclick="selectOption(this)"
+                        >
+
+                            <span class="option-letter">
+                                B
+                            </span>
+
+                            <span class="option-text">
+                                LEFT JOIN
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="option"
+                            onclick="selectOption(this)"
+                        >
+
+                            <span class="option-letter">
+                                C
+                            </span>
+
+                            <span class="option-text">
+                                RIGHT JOIN
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="option"
+                            onclick="selectOption(this)"
+                        >
+
+                            <span class="option-letter">
+                                D
+                            </span>
+
+                            <span class="option-text">
+                                FULL JOIN
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="quiz-actions">
+
+                        <button class="skip-button">
+                            Skip question
+                        </button>
+
+                        <button
+                            class="next-button"
+                            onclick="nextQuestion()"
+                        >
+                            Next Question →
+                        </button>
+
+                    </div>
+
+
+                    <!-- RESULT -->
+
+                    <div class="result" id="result">
+
+                        <div class="result-icon">
+                            ✓
+                        </div>
+
+                        <h2>
+                            Quiz Completed!
+                        </h2>
+
+                        <p>
+                            WorkMate AI analyzed your performance.
+                        </p>
+
+                        <div class="result-score" id="resultScore">
+                            80%
+                        </div>
+
+                        <button
+                            class="restart"
+                            onclick="location.reload()"
+                        >
+                            Take Quiz Again
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RIGHT COLUMN -->
+
+                <aside class="side-column">
+
+
+                    <!-- SKILL IMPACT -->
+
+                    <div class="side-card">
+
+                        <p class="side-label">
+                            SKILL DNA IMPACT
+                        </p>
+
+                        <h3>
+                            SQL Skills
+                        </h3>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-top">
+
+                                <span>
+                                    JOIN Operations
+                                </span>
+
+                                <strong>
+                                    58%
+                                </strong>
+
+                            </div>
+
+                            <div class="skill-bar">
+
+                                <div style="width:58%;"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-top">
+
+                                <span>
+                                    Query Basics
+                                </span>
+
+                                <strong>
+                                    82%
+                                </strong>
+
+                            </div>
+
+                            <div class="skill-bar">
+
+                                <div style="width:82%;"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="skill-item">
+
+                            <div class="skill-top">
+
+                                <span>
+                                    Aggregation
+                                </span>
+
+                                <strong>
+                                    46%
+                                </strong>
+
+                            </div>
+
+                            <div class="skill-bar">
+
+                                <div style="width:46%;"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ADAPTIVE -->
+
+                    <div class="side-card adaptive-card">
+
+                        <p class="side-label">
+                            ✦ ADAPTIVE AI
+                        </p>
+
+                        <h3>
+                            Your answers matter
+                        </h3>
+
+                        <p>
+                            WorkMate AI uses your quiz performance
+                            to decide what you should learn next.
+                        </p>
+
+                        <div class="tip">
+                            Score below 70% → More revision<br>
+                            Score 70–85% → Continue path<br>
+                            Score above 85% → Advanced content
+                        </div>
+
+                    </div>
+
+
+                    <!-- QUESTION INFO -->
+
+                    <div class="side-card">
+
+                        <p class="side-label">
+                            QUIZ PROGRESS
+                        </p>
+
+                        <h3>
+                            Keep going 🚀
+                        </h3>
+
+                        <p style="
+                            color:#999;
+                            font-size:10px;
+                            line-height:1.6;
+                        ">
+                            Answer each question carefully.
+                            Your results will update your
+                            Skill DNA after the quiz.
+                        </p>
+
+                    </div>
+
+
+                </aside>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="auth.js" data-auth="protected"></script>
+<script>
+
+        let selected = false;
+
+        let currentQuestion = 4;
+
+        let score = 0;
+
+
+        function selectOption(button) {
+
+            const options =
+                document.querySelectorAll(".option");
+
+            options.forEach(option => {
+
+                option.classList.remove("selected");
+
+            });
+
+            button.classList.add("selected");
+
+            selected = true;
+        }
+
+
+        function nextQuestion() {
+
+            if (!selected) {
+
+                alert("Please select an answer first.");
+
+                return;
+            }
+
+
+            /*
+                Correct answer for this demo:
+                B = LEFT JOIN
+            */
+
+            const selectedOption =
+                document.querySelector(".option.selected");
+
+            const answer =
+                selectedOption
+                    .querySelector(".option-letter")
+                    .textContent;
+
+
+            if (answer === "B") {
+
+                score += 10;
+
+            }
+
+
+            if (currentQuestion >= 10) {
+
+                showResult();
+
+                return;
+            }
+
+
+            currentQuestion++;
+
+            selected = false;
+
+
+            document.getElementById("questionNumber")
+                .textContent =
+                "QUESTION " +
+                currentQuestion +
+                " OF 10";
+
+
+            document.getElementById("progressBar")
+                .style.width =
+                (currentQuestion * 10) + "%";
+
+
+            document.querySelectorAll(".option")
+                .forEach(option => {
+
+                    option.classList.remove("selected");
+
+                });
+
+
+            /*
+                Demo question change
+            */
+
+            if (currentQuestion === 5) {
+
+                document.querySelector(".question")
+                    .textContent =
+                    "Which SQL clause is used to filter grouped results?";
+
+                updateOptions([
+                    "WHERE",
+                    "ORDER BY",
+                    "HAVING",
+                    "GROUP BY"
+                ]);
+
+            }
+
+            else if (currentQuestion === 6) {
+
+                document.querySelector(".question")
+                    .textContent =
+                    "Which SQL command is used to retrieve data from a database?";
+
+                updateOptions([
+                    "SELECT",
+                    "INSERT",
+                    "UPDATE",
+                    "DELETE"
+                ]);
+
+            }
+
+            else {
+
+                document.querySelector(".question")
+                    .textContent =
+                    "Which SQL statement is used to sort query results?";
+
+                updateOptions([
+                    "GROUP BY",
+                    "ORDER BY",
+                    "SORT BY",
+                    "ARRANGE"
+                ]);
+
+            }
+
+        }
+
+
+        function updateOptions(values) {
+
+            const options =
+                document.querySelectorAll(".option");
+
+            const letters = ["A", "B", "C", "D"];
+
+
+            options.forEach((option, index) => {
+
+                option.querySelector(".option-letter")
+                    .textContent = letters[index];
+
+                option.querySelector(".option-text")
+                    .textContent = values[index];
+
+            });
+
+        }
+
+
+        function showResult() {
+
+            document.querySelector(".question-top")
+                .style.display = "none";
+
+            document.querySelector(".progress")
+                .style.display = "none";
+
+            document.querySelector(".question-card-label")
+                .style.display = "none";
+
+            document.querySelector(".question")
+                .style.display = "none";
+
+            document.querySelector(".options")
+                .style.display = "none";
+
+            document.querySelector(".quiz-actions")
+                .style.display = "none";
+
+
+            document.getElementById("result")
+                .style.display = "block";
+
+
+            document.getElementById("resultScore")
+                .textContent =
+                score + "%";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

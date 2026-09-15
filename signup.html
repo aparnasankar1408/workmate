@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WorkMate AI | Create Account</title>
+
+    <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+
+    <div class="signup-page">
+
+        <div class="signup-card">
+
+            <!-- BRAND -->
+
+            <div class="brand">
+                <div class="brand-icon">W</div>
+
+                <div class="brand-name">
+                    Work<span>Mate</span> AI
+                </div>
+            </div>
+
+
+            <!-- HEADING -->
+
+            <div class="heading">
+
+                <h1>Create your account</h1>
+
+                <p>
+                    Start your personalized workplace learning journey.
+                </p>
+
+            </div>
+
+
+            <!-- SIGN UP FORM -->
+
+            <form id="signupForm">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+                </div>
+
+
+                <label class="terms">
+
+                    <input type="checkbox" id="terms" required>
+
+                    <span>
+                        I agree to the terms and conditions
+                    </span>
+
+                </label>
+
+
+                <button type="submit" class="signup-button">
+                    Create Account
+                    <span>→</span>
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+
+            <!-- LOGIN -->
+
+            <p class="login-text">
+
+                Already have an account?
+
+                <a href="index.html">
+                    Login
+                </a>
+
+            </p>
+
+
+            <p class="footer">
+                © 2026 WorkMate AI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="auth.js"></script>
+    <script src="signup.js"></script>
+
+</body>
+
+</html>

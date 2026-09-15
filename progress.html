@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WorkMate AI | Progress</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f6f8;
+            color: #242424;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 245px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: #242424;
+            color: white;
+            padding: 28px 16px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 0 10px;
+            margin-bottom: 42px;
+        }
+
+        .logo-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            background: #f97316;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .logo h2 {
+            font-size: 19px;
+        }
+
+        .logo h2 span {
+            color: #f97316;
+        }
+
+        .logo small {
+            display: block;
+            color: #888;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        /* ================= NAV ================= */
+
+        .nav {
+            flex: 1;
+        }
+
+        .nav-title {
+            color: #777;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            padding-left: 16px;
+            margin-bottom: 10px;
+        }
+
+        .nav-title:not(:first-child) {
+            margin-top: 28px;
+        }
+
+        .nav-item {
+            height: 45px;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 0 13px;
+            margin-bottom: 4px;
+            border-radius: 9px;
+            color: #aaa;
+            font-size: 13px;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,.06);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: #f97316;
+            color: white;
+        }
+
+        /* ================= BOTTOM ================= */
+
+        .sidebar-bottom {
+            margin-top: auto;
+        }
+
+        .help-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            background: rgba(255,255,255,.06);
+        }
+
+        .help-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(249,115,22,.16);
+            color: #fb923c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .help-card strong {
+            font-size: 12px;
+        }
+
+        .help-card p {
+            color: #888;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 7px 0;
+            border-top: 1px solid #3a3a3a;
+        }
+
+        .avatar,
+        .top-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #fed7aa;
+            color: #9a3412;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .profile-info span {
+            display: block;
+            color: #888;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        .more {
+            color: #777;
+        }
+
+        /* ================= MAIN ================= */
+
+        .main {
+            margin-left: 245px;
+            min-height: 100vh;
+        }
+
+        /* ================= TOPBAR ================= */
+
+        .topbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 35px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .top-title strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .top-title span {
+            display: block;
+            color: #999;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .notification {
+            border: none;
+            background: transparent;
+            font-size: 17px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .notification-dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #f97316;
+            border-radius: 50%;
+            top: 0;
+            right: 0;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 32px 35px 60px;
+        }
+
+        .label {
+            color: #aaa;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            margin-bottom: 7px;
+        }
+
+        .page-header {
+            margin-bottom: 24px;
+        }
+
+        .page-header h1 {
+            font-size: 30px;
+            letter-spacing: -.7px;
+            margin-bottom: 6px;
+        }
+
+        .subtitle {
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* ================= HERO ================= */
+
+        .progress-hero {
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(249,115,22,.30),
+                    transparent 30%
+                ),
+                #292929;
+
+            color: white;
+            border-radius: 15px;
+            padding: 26px 28px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-hero::before {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 50%;
+            right: -150px;
+            top: -190px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .hero-label {
+            color: #fb923c;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1.3px;
+            margin-bottom: 9px;
+        }
+
+        .hero-content h2 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .hero-content p {
+            color: #bbb;
+            font-size: 11px;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .overall-progress {
+            width: 155px;
+            height: 155px;
+            border-radius: 50%;
+
+            background:
+                conic-gradient(
+                    #f97316 0deg 259deg,
+                    #454545 259deg 360deg
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+        .circle-inner {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            background: #292929;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle-inner strong {
+            font-size: 30px;
+        }
+
+        .circle-inner span {
+            color: #999;
+            font-size: 9px;
+        }
+
+        /* ================= STAT CARDS ================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e7e7e7;
+            border-radius: 13px;
+            padding: 18px;
+        }
+
+        .stat-icon {
+            width: 35px;
+            height: 35px;
+            border-radius: 9px;
+
+            background: #fff0e5;
+            color: #f97316;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 13px;
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+
+        .stat-card span {
+            color: #999;
+            font-size: 10px;
+        }
+
+        .trend {
+            color: #16a34a !important;
+            font-size: 9px !important;
+            margin-top: 7px;
+            display: block;
+        }
+
+        /* ================= TWO COLUMN ================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 18px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e7e7e7;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-header h3 {
+            font-size: 14px;
+        }
+
+        .card-header span {
+            color: #aaa;
+            font-size: 9px;
+        }
+
+        /* ================= CHART ================= */
+
+        .chart {
+            height: 210px;
+            display: flex;
+            align-items: flex-end;
+            gap: 16px;
+            padding: 15px 8px 0;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .bar-group {
+            flex: 1;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .bar {
+            width: 100%;
+            max-width: 38px;
+
+            background: #fed7aa;
+
+            border-radius: 6px 6px 0 0;
+
+            transition: .3s;
+        }
+
+        .bar:hover {
+            background: #f97316;
+        }
+
+        .bar.highlight {
+            background: #f97316;
+        }
+
+        .bar-group span {
+            color: #999;
+            font-size: 8px;
+        }
+
+        .chart-labels {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .chart-labels span {
+            color: #aaa;
+            font-size: 8px;
+        }
+
+        /* ================= SKILL PROGRESS ================= */
+
+        .skill-row {
+            margin-bottom: 18px;
+        }
+
+        .skill-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+        .skill-info span {
+            font-size: 10px;
+            color: #555;
+        }
+
+        .skill-info strong {
+            font-size: 10px;
+            color: #f97316;
+        }
+
+        .skill-progress {
+            height: 7px;
+            background: #eee;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .skill-progress div {
+            height: 100%;
+            background: #f97316;
+            border-radius: 20px;
+        }
+
+        /* ================= ACTIVITY ================= */
+
+        .activity {
+            margin-top: 18px;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 34px;
+            height: 34px;
+
+            flex-shrink: 0;
+
+            border-radius: 9px;
+
+            background: #fff0e5;
+            color: #f97316;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 13px;
+        }
+
+        .activity-info strong {
+            display: block;
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        .activity-info span {
+            color: #999;
+            font-size: 9px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1050px) {
+
+            .sidebar {
+                width: 215px;
+            }
+
+            .main {
+                margin-left: 215px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .sidebar {
+                display: none;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .content {
+                padding: 25px 18px 40px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .overall-progress {
+                width: 125px;
+                height: 125px;
+            }
+
+            .circle-inner {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header h1 {
+                font-size: 25px;
+            }
+
+            .chart {
+                gap: 8px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-box">
+                W
+            </div>
+
+            <div>
+
+                <h2>
+                    Work<span>Mate</span>
+                </h2>
+
+                <small>
+                    AI Learning
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <nav class="nav">
+
+            <p class="nav-title">MAIN</p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="ai.html" class="nav-item">
+                <span>✦</span>
+                AI Assistant
+            </a>
+
+            <a href="dna.html" class="nav-item">
+                <span>◈</span>
+                Skill DNA
+            </a>
+
+            <a href="gap.html" class="nav-item">
+                <span>⚡</span>
+                Skill Gaps
+            </a>
+
+
+            <p class="nav-title">LEARNING</p>
+
+            <a href="path.html" class="nav-item">
+                <span>▣</span>
+                Learning Path
+            </a>
+
+            <a href="quiz.html" class="nav-item">
+                <span>✓</span>
+                AI Quiz
+            </a>
+
+            <a href="progress.html" class="nav-item active">
+                <span>◔</span>
+                Progress
+            </a>
+
+
+            <p class="nav-title">SYSTEM</p>
+
+            <a href="settings.html" class="nav-item">
+                <span>⚙</span>
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="help-card">
+
+                <div class="help-icon">
+                    ?
+                </div>
+
+                <div>
+
+                    <strong>
+                        Need help?
+                    </strong>
+
+                    <p>
+                        Ask WorkMate AI
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="avatar">
+                    AS
+                </div>
+
+                <div class="profile-info">
+
+                    <strong>
+                        Aparna
+                    </strong>
+
+                    <span>
+                        IT Student
+                    </span>
+
+                </div>
+
+                <span class="more">
+                    •••
+                </span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="top-title">
+
+                <strong>
+                    Progress
+                </strong>
+
+                <span>
+                    Track your learning journey and skill growth
+                </span>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button class="notification">
+
+                    🔔
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+                <div class="top-avatar">
+                    AS
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="content">
+
+
+            <!-- HEADER -->
+
+            <section class="page-header">
+
+                <p class="label">
+                    YOUR LEARNING JOURNEY
+                </p>
+
+                <h1>
+                    Progress Overview
+                </h1>
+
+                <p class="subtitle">
+                    See how your skills and learning are improving over time.
+                </p>
+
+            </section>
+
+
+
+            <!-- HERO -->
+
+            <section class="progress-hero">
+
+                <div class="hero-content">
+
+                    <div>
+
+                        <p class="hero-label">
+                            ✦ WORKMATE AI INSIGHT
+                        </p>
+
+                        <h2>
+                            You're making great progress! 🚀
+                        </h2>
+
+                        <p>
+                            Your overall learning progress has improved by
+                            12% this month. Keep completing your learning
+                            path and AI quizzes to strengthen your Skill DNA.
+                        </p>
+
+                    </div>
+
+
+                    <div class="overall-progress">
+
+                        <div class="circle-inner">
+
+                            <strong>
+                                72%
+                            </strong>
+
+                            <span>
+                                OVERALL
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- STAT CARDS -->
+
+            <section class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ◈
+                    </div>
+
+                    <strong>
+                        8
+                    </strong>
+
+                    <span>
+                        Skills Developed
+                    </span>
+
+                    <small class="trend">
+                        ↑ 2 this month
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <strong>
+                        14
+                    </strong>
+
+                    <span>
+                        Quizzes Completed
+                    </span>
+
+                    <small class="trend">
+                        ↑ 4 this month
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ◷
+                    </div>
+
+                    <strong>
+                        18.5h
+                    </strong>
+
+                    <span>
+                        Learning Time
+                    </span>
+
+                    <small class="trend">
+                        ↑ 3.2h this week
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⚡
+                    </div>
+
+                    <strong>
+                        82%
+                    </strong>
+
+                    <span>
+                        Average Quiz Score
+                    </span>
+
+                    <small class="trend">
+                        ↑ 7% improvement
+                    </small>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- DASHBOARD GRID -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- LEARNING CHART -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h3>
+                            Learning Activity
+                        </h3>
+
+                        <span>
+                            LAST 7 DAYS
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart">
+
+
+                        <div class="bar-group">
+
+                            <div
+                                class="bar"
+                                style="height:35%;">
+                            </div>
+
+                            <span>
+                                Mon
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar-group">
+
+                            <div
+                                class="bar"
+                                style="height:55%;">
+                            </div>
+
+                            <span>
+                                Tue
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar-group">
+
+                            <div
+                                class="bar highlight"
+                                style="height:75%;">
+                            </div>
+
+                            <span>
+                                Wed
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar-group">
+
+                            <div
+                                class="bar"
+                                style="height:45%;">
+                            </div>
+
+                            <span>
+                                Thu
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar-group">
+
+                            <div
+                                class="bar"
+                                style="height:90%;">
+                            </div>
+
+                            <span>
+                                Fri
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar-group">
+
+                            <div
+                                class="bar"
+                                style="height:62%;">
+                            </div>
+
+                            <span>
+                                Sat
+                            </span>
+
+                        </div>
+
+
+                        <div class="bar-group">
+
+                            <div
+                                class="bar highlight"
+                                style="height:80%;">
+                            </div>
+
+                            <span>
+                                Sun
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="chart-labels">
+
+                        <span>Minutes learned</span>
+
+                        <span>Higher activity →</span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- SKILL PROGRESS -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h3>
+                            Skill Progress
+                        </h3>
+
+                        <span>
+                            CURRENT LEVEL
+                        </span>
+
+                    </div>
+
+
+                    <div class="skill-row">
+
+                        <div class="skill-info">
+
+                            <span>
+                                SQL
+                            </span>
+
+                            <strong>
+                                82%
+                            </strong>
+
+                        </div>
+
+                        <div class="skill-progress">
+
+                            <div style="width:82%;"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-row">
+
+                        <div class="skill-info">
+
+                            <span>
+                                Python
+                            </span>
+
+                            <strong>
+                                76%
+                            </strong>
+
+                        </div>
+
+                        <div class="skill-progress">
+
+                            <div style="width:76%;"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-row">
+
+                        <div class="skill-info">
+
+                            <span>
+                                Communication
+                            </span>
+
+                            <strong>
+                                68%
+                            </strong>
+
+                        </div>
+
+                        <div class="skill-progress">
+
+                            <div style="width:68%;"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-row">
+
+                        <div class="skill-info">
+
+                            <span>
+                                Data Analysis
+                            </span>
+
+                            <strong>
+                                54%
+                            </strong>
+
+                        </div>
+
+                        <div class="skill-progress">
+
+                            <div style="width:54%;"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="skill-row">
+
+                        <div class="skill-info">
+
+                            <span>
+                                Problem Solving
+                            </span>
+
+                            <strong>
+                                61%
+                            </strong>
+
+                        </div>
+
+                        <div class="skill-progress">
+
+                            <div style="width:61%;"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- RECENT ACTIVITY -->
+
+            <section class="card activity">
+
+                <div class="card-header">
+
+                    <h3>
+                        Recent Learning Activity
+                    </h3>
+
+                    <span>
+                        UPDATED TODAY
+                    </span>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        ✓
+                    </div>
+
+                    <div class="activity-info">
+
+                        <strong>
+                            Completed SQL Fundamentals Quiz
+                        </strong>
+
+                        <span>
+                            Score: 85% • 2 hours ago
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        ◈
+                    </div>
+
+                    <div class="activity-info">
+
+                        <strong>
+                            Improved SQL JOIN Operations
+                        </strong>
+
+                        <span>
+                            Skill DNA updated • Yesterday
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        ▣
+                    </div>
+
+                    <div class="activity-info">
+
+                        <strong>
+                            Completed "Database Basics" module
+                        </strong>
+
+                        <span>
+                            Learning Path • 2 days ago
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        ✦
+                    </div>
+
+                    <div class="activity-info">
+
+                        <strong>
+                            Asked WorkMate AI a question
+                        </strong>
+
+                        <span>
+                            Question generated a SQL skill signal • 3 days ago
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+<script src="auth.js" data-auth="protected"></script>
+</body>
+
+</html>
